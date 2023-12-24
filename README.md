@@ -2,4 +2,3 @@
 
 - No help
 - no AI
-- minimal implementation
