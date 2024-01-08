@@ -1,4 +1,4 @@
-# Day 5 AOC 2023 **UNFINISHED**
+# Day 5 AOC 2023
 
 import re
 input = """seeds: 79 14 55 13
@@ -101,12 +101,6 @@ def CheckSeed(seed):
             # Range variable
             seedrange=maplist[counter][(3)*(b+1)]
 
-            # TODO: if seed in range(source,source+range):
-            #     # b = a or something (set new seed or store valid ones in array)
-            #     print("yes")
-            # else:
-            #     print("no")
-            # print(destination,source,seedrange)
             if seed in range(source,source+seedrange):
                 seed = (seed-source)+destination
                 break
