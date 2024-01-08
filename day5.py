@@ -84,26 +84,40 @@ def getlen(alist):
     # Return int calculation
     return newlist
 
-# Set first seed at test input
-seed=maplist[0][1]
-print(seed,"seed")
-for a in range(1,len(maplist)):
-    counter=a
-    # Get length of array in seed-to-soil map, etc...
-    arraylines=int(getlen(maplist[counter]))
-    for b in range(arraylines):
-        # ... find every middle number of subarray (source)
-        source=maplist[counter][((3)*(b+1))-1]
-        # From 0 to range(end of section list), find 3rd number in sub-array (range)
-        seedrange=maplist[counter][(3)*(b+1)]
-        destination=maplist[counter][((3)*(b+1))-2]
-        # TODO: if a in range(source,source+range):
-        #     # b = a or something (set new seed or store valid ones in array)
-        #     print("yes")
-        # else:
-        #     print("no")
 
+def CheckSeed(seed):
+    for a in range(1,len(maplist)):
+        counter=a
+        # Get length of array in seed-to-soil map, etc...
+        arraylines=int(getlen(maplist[counter]))
+        for b in range(arraylines):
+            
+            # Next place to look in variable a
+            destination=maplist[counter][(3*(b+1))-2]
 
+            # See if input is in range
+            source=maplist[counter][((3)*(b+1))-1]
+
+            # Range variable
+            seedrange=maplist[counter][(3)*(b+1)]
+
+            # TODO: if seed in range(source,source+range):
+            #     # b = a or something (set new seed or store valid ones in array)
+            #     print("yes")
+            # else:
+            #     print("no")
+            # print(destination,source,seedrange)
+            if seed in range(source,source+seedrange):
+                seed = (seed-source)+destination
+                break
+    return seed
+
+# Create an array of results where the smallest number (i.e., distance) is the result
+SeedArray = []
+for i in range(len(maplist[0])-1):
+    seed = maplist[0][i+1]
+    SeedArray.append(CheckSeed(seed))
+print(min(SeedArray))
 
 
 # --Old stuff for when I used a dictionary--
